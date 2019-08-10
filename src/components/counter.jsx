@@ -1,10 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Counter extends Component {
+  state = {
+    count: 1,
+    tags: [
+      {
+        id: 1,
+        name: 'Tag 1'
+      },
+      {
+        id: 2,
+        name: 'Tag 2'
+      },
+      {
+        id: 3,
+        name: 'Tag 3'
+      }
+    ]
+  };
+
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? 'Zero' : count;
+  }
+
+  getBadgeClasses() {
+    let classes = 'badge m-2 badge-';
+    classes += this.state.count === 0 ? 'warning' : 'primary';
+    return classes;
+  }
   render() {
+    const tags = this.state.tags;
     return (
-      <h1>Hello world</h1>
-    )
+      <React.Fragment>
+        <span className={this.getBadgeClasses()}> {this.formatCount()} </span>
+        <button className='btn btn-secondary btn-sm'> Increment </button>
+        <ul>
+          {tags.map(tag => (
+            <li key={tag.id}>{tag.name}</li>
+          ))}
+        </ul>
+      </React.Fragment>
+    );
   }
 }
 
