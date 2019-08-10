@@ -20,7 +20,7 @@ class Counter extends Component {
   };
 
   handleIncrement = () => {
-    console.log('clicked', this);
+    this.setState({ count: this.state.count + 1 });
   };
 
   formatCount() {
