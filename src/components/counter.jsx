@@ -19,9 +19,9 @@ class Counter extends Component {
     ]
   };
 
-  handleIncrement() {
-    console.log('clicked');
-  }
+  handleIncrement = () => {
+    console.log('clicked', this);
+  };
 
   formatCount() {
     const { count } = this.state;
